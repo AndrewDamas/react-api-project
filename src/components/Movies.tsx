@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Genres, {GenreList} from '../models/Genres'
 import Movie from '../models/MovieInterface'
+import SearchMovieResults, { SearchMovie } from '../models/Search'
 import GenreListService from '../services/GenreList'
 import GetMovies from '../services/GetMovie'
 
@@ -20,10 +21,12 @@ const movies : Movie[] = [
 ]
 
 function Movies() {
-    const [movie, setMovie] = useState<Movie>()
+    const [search, setSearch] = useState<string>("");
+    const [title, setTitle] = useState<string>("");
+    const [movie, setMovie] = useState<SearchMovieResults[]>()
     const [genres, setGenres] = useState<Genres[]>()
     useEffect(() => {
-        GetMovies().then(data => {
+        GetMovies(title).then(data => {
             setMovie(data);
         });
     }, []);
@@ -45,13 +48,18 @@ function Movies() {
                     <li>Horror</li>
                 </ul>
             </nav>
-            <p>{movie?.title}</p>
-            <p>{movie?.overview}</p>
-            {movie?.genres.map((genre, index) => <p key={index}>{genre.name}</p>)}
-            {
-                movie !== undefined &&
-                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="MOVIE POSTER" />
-            }
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                setTitle(search);
+                console.log(title);
+                }}>
+                <label htmlFor="search">SEARCH:</label>
+                <input type="text" name="" id="search" placeholder="Type movie/tv show here" onChange={(e) => {setTitle(e.target.value)}}/>
+                <button type="submit">SEARCH</button>
+            </form>
+            {movie?.map((title, index) =>  
+                <p key={index}>{title.title}</p>
+            )}
         </div>
     )
 }
