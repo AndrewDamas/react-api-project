@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import Genres, {GenreList} from '../models/Genres'
 import Movie from '../models/MovieInterface'
+import GenreListService from '../services/GenreList'
 import GetMovies from '../services/GetMovie'
 
 const movies : Movie[] = [
@@ -19,9 +21,15 @@ const movies : Movie[] = [
 
 function Movies() {
     const [movie, setMovie] = useState<Movie>()
+    const [genres, setGenres] = useState<Genres[]>()
     useEffect(() => {
         GetMovies().then(data => {
             setMovie(data);
+        });
+    }, []);
+    useEffect(() => {
+        GenreListService().then(data => {
+            setGenres(data);
         });
     }, []);
     return (
@@ -39,8 +47,11 @@ function Movies() {
             </nav>
             <p>{movie?.title}</p>
             <p>{movie?.overview}</p>
-            <p>{movie?.genres.map(genre => <p>{genre.name}</p>)}</p>
-            <img src={`https://image.tmdb.org/t/p/w200${movie?.poster_path}`} alt="MOVIE POSTER" />
+            {movie?.genres.map((genre, index) => <p key={index}>{genre.name}</p>)}
+            {
+                movie !== undefined &&
+                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="MOVIE POSTER" />
+            }
         </div>
     )
 }
