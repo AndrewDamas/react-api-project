@@ -21,15 +21,7 @@ const movies : Movie[] = [
 ]
 
 function Movies() {
-    const [search, setSearch] = useState<string>("");
-    const [title, setTitle] = useState<string>("");
-    const [movie, setMovie] = useState<SearchMovieResults[]>()
     const [genres, setGenres] = useState<Genres[]>()
-    useEffect(() => {
-        GetMovies(title).then(data => {
-            setMovie(data);
-        });
-    }, []);
     useEffect(() => {
         GenreListService().then(data => {
             setGenres(data);
@@ -48,18 +40,6 @@ function Movies() {
                     <li>Horror</li>
                 </ul>
             </nav>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                setTitle(search);
-                console.log(title);
-                }}>
-                <label htmlFor="search">SEARCH:</label>
-                <input type="text" name="" id="search" placeholder="Type movie/tv show here" onChange={(e) => {setTitle(e.target.value)}}/>
-                <button type="submit">SEARCH</button>
-            </form>
-            {movie?.map((title, index) =>  
-                <p key={index}>{title.title}</p>
-            )}
         </div>
     )
 }
