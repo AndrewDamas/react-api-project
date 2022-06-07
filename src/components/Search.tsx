@@ -21,7 +21,11 @@ function Search() {
         <button type="submit">SEARCH</button>
     </form>
     {movie.map((title, index) =>
-      <p key={index}>{title.title}</p>
+      <div>
+        <p key={index}>{title.title}</p>
+        <img src= {`https://image.tmdb.org/t/p/w200/${title.poster_path}`} alt="" />
+        <p key={index}>{title.overview}</p>
+      </div>
     )}
     </div>
   )

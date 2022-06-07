@@ -5,11 +5,13 @@ import Header from "./components/Header"
 import Movies from './components/Movies';
 import Popular from './components/Popular';
 import Search from './components/Search';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <HomePage/>
       <Search/>
       <Movies/>
       <Popular/>

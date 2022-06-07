@@ -5,6 +5,7 @@ export interface SearchMovie{
 export default interface SearchMovieResults{
     genres_ids : number[],
     backdrop_path : string | null,
+    id : number,
     title : string,
     overview : string,
     vote_average : number,

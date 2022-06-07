@@ -7,9 +7,9 @@ function Header() {
         <ul>
             <li>Movies</li>
             <li>Tv Shows</li>
-            <li>Wish List</li>
+            <li>Watchlist</li>
             <li>Search</li>
-            <li>Home</li>
+            <li><a href="">Home</a></li>
         </ul>
     </header>
   )

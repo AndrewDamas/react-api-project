@@ -8,5 +8,6 @@ export default interface Movie {
     vote_average : number,
     poster_path : string,
     release_date : string,
-    runtime : number
+    runtime : number,
+    tagline : string
 }

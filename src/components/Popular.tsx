@@ -22,12 +22,12 @@ export default function Popular() {
         <div className="Popular">
             <h1>POPULAR MOVIES</h1>
                 {   
-                    popular.map((thingy, index) => 
+                    popular.map((movie, index) => 
                         <div key={index}>
-                            <p>{thingy.title}</p>
-                            <p>{thingy.overview}</p>
+                            <p>{movie.title}</p>
+                            <p>{movie.overview}</p>
                             {
-                                thingy.genre_ids.map((genre_id, index) => 
+                                movie.genre_ids.map((genre_id, index) => 
                                     genres !== undefined &&
                                     <ul key={index}>
                                         {
