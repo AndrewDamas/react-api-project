@@ -4,6 +4,7 @@ import Results from '../models/Popular'
 import Discover from '../services/Discover';
 import GenreListService from '../services/GenreList';
 import getPopular from '../services/GetPopular';
+import '../styles/HomePage.css'
 
 export default function HomePage() {
   const [popular, setPopular] = useState<Results[]>([]);
@@ -29,15 +30,18 @@ export default function HomePage() {
     })
   }, [])
   return (
-    <div>
+    <div className='HomePage'>
       <h1>Popular</h1>
+      <div className="category">
           {
             popular.map((movie, index) => 
               /* movie.genre_ids.map((genre, index) =>
                 genre === 53 && */
-                <div>
-                  <p>{movie.title}</p>
-                  <p>{movie.overview}</p>
+                <div className='movieListing'>
+                  <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster" />
+                  {/* <p>{movie.overview}</p> */}
+                  <h3>{movie.title}</h3>
+                  <div className='movieGenre'>
                     { // LINES 37 - 52 CONVERT GENRE IDS TO GENRES
                       movie.genre_ids.map((genre_id, index) => 
                         genres !== undefined &&
@@ -54,22 +58,34 @@ export default function HomePage() {
                           </ul>
                       )
                     }
+                    </div>
                 </div>
               /* ) */
             )
           }
-        <h1>THRILLER</h1>
+        </div>
+        <h1>Thrillers</h1>
+        <div className="category">
           {
             discoverThriller.map((movie, index) => 
-              <p>{movie.title}</p>
+            <div className='movieListing'>
+              <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster" />
+              <h3>{movie.title}</h3>
+            </div>
             )
           }
-        <h1>Adventure</h1>
+        </div>
+        <h1>Adventures</h1>
+        <div className="category">
           {
-            discoverAdventure.map((movie, index) => 
-              <p>{movie.title}</p>
+            discoverAdventure.map((movie, index) =>
+            <div className='movieListing'> 
+              <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster"/>
+              <h3>{movie.title}</h3>
+            </div>
             )
           }
+        </div>
     </div>
   )
 }

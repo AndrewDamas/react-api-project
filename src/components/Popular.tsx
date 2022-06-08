@@ -25,6 +25,7 @@ export default function Popular() {
                     popular.map((movie, index) => 
                         <div key={index}>
                             <p>{movie.title}</p>
+                            <img src= {`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="poster" />
                             <p>{movie.overview}</p>
                             {
                                 movie.genre_ids.map((genre_id, index) => 

@@ -1,0 +1,33 @@
+.Search{
+    margin: 3.8rem 1rem;
+    
+}
+
+.Search form{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#search {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: .4rem;
+}
+
+.Search .movieListing {
+    margin-left: 10px;
+    flex-wrap: wrap;
+}
+
+.Search .poster {
+    margin-left: 8px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.731);
+    border-radius: 5px;
+    width: 200px;
+    transition: .2s;
+}
+
+ .Search .poster:hover {
+    transform: scale(1.05);
+}

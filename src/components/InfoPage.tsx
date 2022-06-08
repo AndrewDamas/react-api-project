@@ -1,8 +1,9 @@
 import React from 'react'
+import Results from '../models/Popular'
 
 function InfoPage() {
   return (
-    <div>InfoPage</div>
+    <div className='InfoPage'>InfoPage</div>
   )
 }
 

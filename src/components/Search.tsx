@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchMovieResults from '../models/Search';
 import GetMovies from '../services/GetMovie';
+import '../styles/Search.css'
 
 function Search() {
   const [title, setTitle] = useState<string>("");
@@ -11,19 +12,18 @@ function Search() {
     });
   }, [title]);
   return (
-    <div>
+    <div className='Search'>
       <form onSubmit={(e) => {
         e.preventDefault();
-        console.log(title);
         }}>
-        <label htmlFor="search">SEARCH:</label>
+        {/* <label htmlFor="search">SEARCH:</label> */}
         <input type="text" name="" id="search" placeholder="Type movie/tv show here" onChange={(e) => {setTitle(e.target.value)}}/>
-        <button type="submit">SEARCH</button>
+        {/* <button type="submit">SEARCH</button> */}
     </form>
     {movie.map((title, index) =>
-      <div>
-        <p key={index}>{title.title}</p>
-        <img src= {`https://image.tmdb.org/t/p/w200/${title.poster_path}`} alt="" />
+      <div className='movieListing'>
+        <h3 key={index}>{title.title}</h3>
+        <img src= {`https://image.tmdb.org/t/p/w200/${title.poster_path}`} alt="" className='poster'/>
         <p key={index}>{title.overview}</p>
       </div>
     )}

@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import '../styles/Header.css'
+import Search from './Search';
 
 function Header() {
-  return (
+
+  const [show, setShow] = useState(false);
+  
+  return (<div>
     <header>
-        <a href="">LOGO</a>
+        <h2 className="logo"><i className="fa-solid fa-trash-can"></i>MOVIE JUNKIE</h2>
         <ul>
             <li>Movies</li>
-            <li>Tv Shows</li>
             <li>Watchlist</li>
-            <li>Search</li>
-            <li><a href="">Home</a></li>
+            <li><i className="fa-solid fa-filter"></i></li>
+            <li><i className="fa-solid fa-magnifying-glass" onClick={(e) =>{
+              show === false ? setShow(true) : setShow(false);
+            }}></i></li>
+            <li><a href=""><i className="fa-solid fa-house"></i></a></li>
         </ul>
     </header>
+    <p className={show === true ? '' : 'hidden'}><Search/></p>
+    </div>
   )
 }
 
