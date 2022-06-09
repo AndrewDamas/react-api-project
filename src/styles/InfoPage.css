@@ -1,0 +1,13 @@
+.InfoPage{
+    height: 100%;
+}
+
+.InfoPage .movieListing {
+    padding: 2rem;
+    padding-top: 3.5rem;
+}
+
+.InfoPage .extraInfo {
+    display: flex;
+    justify-content: space-around;
+}

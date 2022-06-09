@@ -10,7 +10,7 @@ function Header() {
     <header>
         <h2 className="logo"><i className="fa-solid fa-trash-can"></i>MOVIE JUNKIE</h2>
         <ul>
-            <li>Movies</li>
+            {/* <li>Movies</li> */}
             <li>Watchlist</li>
             <li><i className="fa-solid fa-filter"></i></li>
             <li><i className="fa-solid fa-magnifying-glass" onClick={(e) =>{

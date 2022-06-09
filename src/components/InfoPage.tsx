@@ -3,9 +3,9 @@ import Results from '../models/Popular'
 import Genres from '../models/Genres';
 import GenreListService from '../services/GenreList';
 import { useParams } from 'react-router-dom';
-import Movie from '../models/MovieInterface';
 import getDetails from '../services/GetDetails';
 import { MovieDetails } from '../models/MovieDetails';
+import "../styles/InfoPage.css"
 
 function InfoPage() {
   const [genres, setGenres] = useState<Genres[]>();
@@ -20,29 +20,14 @@ function InfoPage() {
   return (
     <div className='InfoPage'>
       <div className='movieListing'>
-        <a href={`/details/${movie?.id}`}>
-            <img src= {`https://image.tmdb.org/t/p/w300/${movie?.poster_path}`} alt="poster" className="poster" />
-        </a>
-        <p>{movie?.overview}</p>
         <h3>{movie?.title}</h3>
-        <div className='movieGenre'>
-        {
-            movie?.genres.map((genre_id, index) => 
-            genres !== undefined &&
-            <ul key={index}>
-                {
-                    genres.map((genre, index) => {
-                    if (genre.id === genre.id){
-                        return (
-                            <li key={index}>{genre.name}</li>
-                        )
-                    }
-                    })
-                }
-            </ul>
-            )
-        }
+        <img src= {`https://image.tmdb.org/t/p/w300/${movie?.poster_path}`} alt="poster" className="poster" />
+          <h4>{movie?.tagline}</h4>
+        <div className="extraInfo">
+          <p>{movie?.vote_average} <i className="fa-solid fa-star"></i></p>
+          <p>{movie?.runtime} min</p>
         </div>
+        <p>{movie?.overview}</p>
         {/* {
             favorited === false ? 
             <button onClick={() => {

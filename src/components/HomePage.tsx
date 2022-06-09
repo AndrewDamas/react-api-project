@@ -77,18 +77,71 @@ export default function HomePage() {
           {
             discoverAction.map((movie, index) => 
             <MovieCard {...movie}/>
+            ).slice(2)
+          }
+        </div>
+        <h1>Adventure</h1>
+        <div className="category">
+          {
+            discoverAdventure.map((movie, index) => 
+            <MovieCard {...movie}/>
+            ).slice(2)
+          }
+        </div>
+        <h1>Animation</h1>
+        <div className="category">
+          {
+            discoverAnimation.map((movie, index) => 
+            <MovieCard {...movie}/>
             )
           }
         </div>
-        <h1>Adventures</h1>
+        <h1>Comedy</h1>
         <div className="category">
           {
-            discoverAdventure.map((movie, index) =>
-            <div className='movieListing'> 
-              <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster"/>
-              <h3>{movie.title}</h3>
-            </div>
+            discoverComedy.map((movie, index) => 
+            <MovieCard {...movie}/>
             )
+          }
+        </div>
+        <h1>Drama</h1>
+        <div className="category">
+          {
+            discoverDrama.map((movie, index) => 
+            <MovieCard {...movie}/>
+            )
+          }
+        </div>
+        <h1>Family</h1>
+        <div className="category">
+          {
+            discoverFamily.map((movie, index) => 
+            <MovieCard {...movie}/>
+            ).slice(2)
+          }
+        </div>
+        <h1>Horror</h1>
+        <div className="category">
+          {
+            discoverHorror.map((movie, index) => 
+            <MovieCard {...movie}/>
+            )
+          }
+        </div>
+        <h1>Romance</h1>
+        <div className="category">
+          {
+            discoverRomance.map((movie, index) => 
+            <MovieCard {...movie}/>
+            )
+          }
+        </div>
+        <h1>Thriller</h1>
+        <div className="category">
+          {
+            discoverThriller.map((movie, index) => 
+            <MovieCard {...movie}/>
+            ).slice(2)
           }
         </div>
     </div>
