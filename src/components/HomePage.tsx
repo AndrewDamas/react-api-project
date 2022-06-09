@@ -9,27 +9,59 @@ import MovieCard from './MovieCard';
 
 export default function HomePage() {
   const [popular, setPopular] = useState<Results[]>([]);
-  const [discoverThriller, setDiscoverThriller] = useState<Results[]>([]);
-  const [discoverAdventure, setDiscoverAdventure] = useState<Results[]>([]);
   const [genres, setGenres] = useState<Genres[]>();
+  const [discoverAction, setDiscoverAction] = useState<Results[]>([]);
+  const [discoverAdventure, setDiscoverAdventure] = useState<Results[]>([]);
+  const [discoverAnimation, setDiscoverAnimation] = useState<Results[]>([]);
+  const [discoverComedy, setDiscoverComedy] = useState<Results[]>([]);
+  const [discoverDrama, setDiscoverDrama] = useState<Results[]>([]);
+  const [discoverFamily, setDiscoverFamily] = useState<Results[]>([]);
+  const [discoverHorror, setDiscoverHorror] = useState<Results[]>([]);
+  const [discoverRomance, setDiscoverRomance] = useState<Results[]>([]);
+  const [discoverThriller, setDiscoverThriller] = useState<Results[]>([]);
+
   useEffect(() => {
     getPopular().then(data => {
       setPopular(data);
     });
   }, []);
+
   useEffect(() => {
     GenreListService().then(data => {
       setGenres(data);
     });
   }, []);
+
   useEffect(() => {
-    Discover(53).then(data => {
-      setDiscoverThriller(data);
-    })
-    Discover(12).then(data => {
+    Discover(28).then((data) => {
+      setDiscoverAction(data);
+    });
+    Discover(12).then((data) => {
       setDiscoverAdventure(data);
-    })
-  }, [])
+    });
+    Discover(16).then((data) => {
+      setDiscoverAnimation(data);
+    });
+    Discover(35).then((data) => {
+      setDiscoverComedy(data);
+    });
+    Discover(18).then((data) => {
+      setDiscoverDrama(data);
+    });
+    Discover(10751).then((data) => {
+      setDiscoverFamily(data);
+    });
+    Discover(27).then((data) => {
+      setDiscoverHorror(data);
+    });
+    Discover(10749).then((data) => {
+      setDiscoverRomance(data);
+    });
+    Discover(53).then((data) => {
+      setDiscoverThriller(data);
+    });
+  }, []);
+
   return (
     <div className='HomePage'>
       <h1>Popular</h1>
@@ -40,10 +72,10 @@ export default function HomePage() {
             )
           }
         </div>
-        <h1>Thrillers</h1>
+        <h1>Action</h1>
         <div className="category">
           {
-            discoverThriller.map((movie, index) => 
+            discoverAction.map((movie, index) => 
             <MovieCard {...movie}/>
             )
           }

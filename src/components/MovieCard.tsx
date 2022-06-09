@@ -6,7 +6,7 @@ import GenreListService from '../services/GenreList';
 import "../styles/HomePage.css"
 
 export default function MovieCard(movie: Results) {
-    const watchlistArray: Results[] = [];
+    // const watchlistArray: Results[] = [];
     const [genres, setGenres] = useState<Genres[]>();
     const [favorited, setFavorited] = useState(false);
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function MovieCard(movie: Results) {
             )
         }
         </div>
-        {
+        {/* {
             favorited === false ? 
             <button onClick={() => {
                 watchlistArray.push(movie);
@@ -54,7 +54,7 @@ export default function MovieCard(movie: Results) {
             watchlistArray.map((movie, index) => 
                 <p key={index}>{movie.title}</p>
             )
-        }
+        } */}
     </div>
   )
 }
