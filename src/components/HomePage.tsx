@@ -5,6 +5,7 @@ import Discover from '../services/Discover';
 import GenreListService from '../services/GenreList';
 import getPopular from '../services/GetPopular';
 import '../styles/HomePage.css'
+import MovieCard from './MovieCard';
 
 export default function HomePage() {
   const [popular, setPopular] = useState<Results[]>([]);
@@ -35,32 +36,7 @@ export default function HomePage() {
       <div className="category">
           {
             popular.map((movie, index) => 
-              /* movie.genre_ids.map((genre, index) =>
-                genre === 53 && */
-                <div className='movieListing'>
-                  <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster" />
-                  {/* <p>{movie.overview}</p> */}
-                  <h3>{movie.title}</h3>
-                  <div className='movieGenre'>
-                    { // LINES 37 - 52 CONVERT GENRE IDS TO GENRES
-                      movie.genre_ids.map((genre_id, index) => 
-                        genres !== undefined &&
-                        <ul key={index}>
-                            {
-                              genres.map((genre, index) => {
-                                if (genre.id === genre_id){
-                                  return (
-                                    <li key={index}>{genre.name}</li>
-                                  )
-                                }
-                              })
-                            }
-                          </ul>
-                      )
-                    }
-                    </div>
-                </div>
-              /* ) */
+            <MovieCard {...movie}/>
             )
           }
         </div>
@@ -68,10 +44,7 @@ export default function HomePage() {
         <div className="category">
           {
             discoverThriller.map((movie, index) => 
-            <div className='movieListing'>
-              <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster" />
-              <h3>{movie.title}</h3>
-            </div>
+            <MovieCard {...movie}/>
             )
           }
         </div>
