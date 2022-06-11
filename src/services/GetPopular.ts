@@ -2,7 +2,7 @@ import axios from "axios";
 import Results, { Popular } from "../models/Popular";
 
 export default function getPopular(): Promise<Results[]>{
-    const apiKey = process.env.REACT_APP_TMDB_API_KEY1 || "";
+    const apiKey = process.env.REACT_APP_TMDB_API_KEY || "";
     return axios
         .get<Popular>(`https://api.themoviedb.org/3/movie/popular`,{
             params: {

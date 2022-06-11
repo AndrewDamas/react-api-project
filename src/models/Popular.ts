@@ -10,5 +10,5 @@ export default interface Results {
     poster_path: string,
     release_date: string,
     title: string,
-    vote_average: 6.8,
+    vote_average: number,
 }
