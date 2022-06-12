@@ -9,6 +9,7 @@ import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import InfoPage from './components/InfoPage';
 import WishList from './components/WishList';
+import Watchlist from './components/Watchlist';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/details/:id" element={<InfoPage/>}/>
           
-          <Route path="/" element={<WishList/>}/>
+          <Route path="/watch-list" element={<Watchlist/>}/>
+          
         </Routes>
       </Router>
       {/* <Search/> */}

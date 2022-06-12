@@ -8,10 +8,11 @@ import "../styles/HomePage.css"
 import FavoriteContextModel from '../context/FavoriteContext';
 
 export default function MovieCard(movie: Results) {
-    const {favMovie, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
+
+    const {favMovies, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
 
     const [genres, setGenres] = useState<Genres[]>();
-    const [favorited, setFavorited] = useState(false);
+    // const [favorited, setFavorited] = useState(false);
     useEffect(() => {
         GenreListService().then(data => {
           setGenres(data);
@@ -47,11 +48,11 @@ export default function MovieCard(movie: Results) {
                     
             <button onClick={() => {
 
-                console.log(favMovie);
+                console.log(movie);
             
-                addFavoriteMovie(favMovie)}}>ADD TO WATCHLIST</button>
+                addFavoriteMovie(movie)}}><i className="fa-solid fa-heart"></i> </button>
             
-            {/* <button onClick={() => removeFavoriteMovie(favMovie) }>REMOVE FROM WATCHLIST</button> */}
+              <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
 
             </div>
         }

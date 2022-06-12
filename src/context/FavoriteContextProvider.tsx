@@ -12,25 +12,33 @@ interface Props {
 }
 
 const FavoriteContextProvider = ({ children }: Props) => {
-  const [favMovie, setFavMovie] = useState<Results[]>([]);
+  const [favMovies, setFavMovies] = useState<Results[]>([]);
 
-  function addFavoriteMovie(favorite: Results[]): void {
+  function addFavoriteMovie(favorite: Results): void {
     // copy then modify
-    let copiedMovie = [...favMovie];
-    copiedMovie.push(favorite);
+    
     // works with .push() empty can provide an empty array 
-    setFavMovie(copiedMovie);
+    setFavMovies((prev) => {
+      let copiedMovie = [...prev]
+      copiedMovie.push(favorite)
+      
+      return copiedMovie
+    });
+    console.log(favMovies);
+
   }
   function removeFavoriteMovie(id: number): void {
-		const index: number = favMovie.findIndex((results) => results.id === id);
+		const index: number = favMovies.findIndex((results) => results.id === id);
         // copy then modify
-        let copiedMovie = [...favMovie];
+        let copiedMovie = [...favMovies];
         copiedMovie.splice(index, 1);
-        setFavMovie(copiedMovie);
+        setFavMovies(copiedMovie);
+
+        console.log(favMovies);
 };
 
 return (
-  <FavoriteContext.Provider value={{ favMovie, addFavoriteMovie, removeFavoriteMovie }}>
+  <FavoriteContext.Provider value={{ favMovies, addFavoriteMovie, removeFavoriteMovie }}>
     {children}
   </FavoriteContext.Provider>
 );

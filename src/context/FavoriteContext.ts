@@ -5,14 +5,14 @@ import Discover from "../services/Discover";
 
 interface FavoriteContextModel{
   // favorite: Results[];
-  favMovie: Results[];
-  addFavoriteMovie: (Results: Results[]) => void;
+  favMovies: Results[];
+  addFavoriteMovie: (results: Results) => void;
   removeFavoriteMovie: (id: number) => void;
 }
 
 const defaultValues:FavoriteContextModel  = {
   // favorite: [],
-  favMovie: [],
+  favMovies: [],
   addFavoriteMovie: () => { },
   removeFavoriteMovie: () => { },
 }
