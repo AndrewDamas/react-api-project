@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom';
+import FilteredContext from '../context/FilterContext';
 import '../styles/Header.css'
 import Filter from './Filter';
 import Search from './Search';
 
 function Header() {
+  const {filteredMovies, showFilter, setShowFilter1, addFilteredMovies} = useContext(FilteredContext);
 
   const [showSearch, setShowSearch] = useState(false);
-  const [showFilter, setShowFilter] = useState(false);
   
   return (<div>
     <header>
@@ -15,7 +16,7 @@ function Header() {
         <ul>
             <li>Watchlist</li>
             <li><i className="fa-solid fa-filter" onClick={(e) =>{
-              showFilter === false ? setShowFilter(true): setShowFilter(false);
+              setShowFilter1();
             }}></i></li>
             <li><i className="fa-solid fa-magnifying-glass" onClick={(e) =>{
               showSearch === false ? setShowSearch(true) : setShowSearch(false);

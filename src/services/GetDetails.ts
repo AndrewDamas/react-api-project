@@ -1,5 +1,6 @@
 import axios from "axios";
 import { MovieDetails } from "../models/MovieDetails";
+import Results from "../models/Popular";
 
 export default function getDetails(id: string): Promise<MovieDetails> {
     const apiKey = process.env.REACT_APP_TMDB_API_KEY1 || "";

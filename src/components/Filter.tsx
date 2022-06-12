@@ -1,43 +1,43 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import Results from "../models/Popular";
 import Discover from "../services/Discover";
 import MovieCard from "./MovieCard";
 import '../styles/Filter.css'
+import FilteredContext from "../context/FilterContext";
 
 export default function Filter() {
 
+    const {filteredMovies, showFilter, setShowFilter1, addFilteredMovies} = useContext(FilteredContext);
+
     const navigate = useNavigate();
 
-    const [rating, setRating] = useState<string>("");
+    const [rating, setRating] = useState<string>("0");
     const [genre, setGenre] = useState("");
-    const [runtime,setRuntime] = useState<string>("");
-
-    const [discoverGenre, setDiscoverGenre] = useState<Results[]>([]);
-    const [discoverRating, setDiscoverRating] = useState<Results[]>([]);
-    const [discoverRuntime, setDiscoverRuntime] = useState<Results[]>([]);
+    const [runtime,setRuntime] = useState<number>(180);
 
     const [discover, setDiscover] = useState<Results[]>([]);
 
     useEffect(() => {
-        Discover(parseInt(genre)).then((data) => {
-            setDiscoverGenre(data);
-          });
-        Discover(undefined, undefined, undefined, runtime).then((data) => {
-            setDiscoverRuntime(data);
-          });
-        Discover(undefined, parseInt(rating)).then((data) => {
-            setDiscoverRating(data);
-          });
-
-        Discover(parseInt(genre), parseInt(rating),'',runtime).then(data => {
+        Discover(parseInt(genre), parseInt(rating),"popularity.desc", runtime).then(data => {
         setDiscover(data);
         })
-    })
+    }, [genre, runtime, rating])
+    
 
     return(
     <div className="Filter">
-        <form onSubmit={() => navigate("/filter")}>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            setShowFilter1();
+            /* discoverRating.map(movie => addFilteredMovies(movie));
+            discoverGenre.map(movie => addFilteredMovies(movie));
+            discoverRuntime.map(movie => addFilteredMovies(movie)); */
+            discover.map((movie) => {
+                addFilteredMovies(movie)
+            });
+            navigate("/filter");
+        }}>
             <div>
             <h4>Rating</h4>
             <label htmlFor="rating">0</label>
@@ -66,19 +66,19 @@ export default function Filter() {
             </div>
             <div>
                 <h4>Runtime</h4>
-                <input type="radio" id="time1" name="time" value='30' onClick={()=>{setRuntime('30')}}></input>
+                <input type="radio" id="time1" name="time" value='30' onClick={()=>{setRuntime(30)}}></input>
                 <label htmlFor="time1"> 30 mins or less </label>
-                <input type="radio" id="time2" name="time" value='60' onClick={()=>{setRuntime('60')}}></input>
+                <input type="radio" id="time2" name="time" value='60' onClick={()=>{setRuntime(60)}}></input>
                 <label htmlFor="time2"> 1 hr or less</label>
-                <input type="radio" id="time3" name="time" value='120' onClick={()=>{setRuntime('120')}}></input>
+                <input type="radio" id="time3" name="time" value='120' onClick={()=>{setRuntime(120)}}></input>
                 <label htmlFor="time3"> 2 hrs or less </label>
-                <input type="radio" id="time4" name="time" value='180' onClick={()=>{setRuntime('180')}}></input>
+                <input type="radio" id="time4" name="time" value='180' onClick={()=>{setRuntime(180)}}></input>
                 <label htmlFor="time4">3 hrs or less </label>
                 {runtime} 
             </div>
             <button type='submit'>Apply Filters</button>
         </form>
-            <div className="displayFilter category">
+            {/* <div className="displayFilter category">
             {
             discoverRating.map((movie, index) => 
             <MovieCard {...movie}/>)
@@ -89,7 +89,7 @@ export default function Filter() {
             discoverGenre.map((movie, index) => 
             <MovieCard {...movie}/>)
             }
-            </div>
+            </div> */}
             {/* <div className="displayFilter category">
             {
             discoverRuntime.map((movie, index) => 
