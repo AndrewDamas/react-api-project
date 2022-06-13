@@ -9,7 +9,8 @@ export default function Watchlist() {
     <div className='WatchList'>
         <h1>Watch List</h1>
         {favMovies.map((movie, index) =>  
-            <li><MovieCard key={index} {...movie}/></li>
+            <MovieCard {...movie}/> 
+          
         )}
 
     </div>

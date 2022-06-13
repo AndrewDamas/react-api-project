@@ -1,5 +1,12 @@
 .InfoPage{
     height: 100%;
+    text-align: center;
+}
+
+.InfoPage .poster {
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
+    border-radius: 5px;
+    width: 350px;
 }
 
 .InfoPage .movieListing {

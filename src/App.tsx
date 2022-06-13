@@ -6,11 +6,13 @@ import Movies from './components/Movies';
 import Popular from './components/Popular';
 import Search from './components/Search';
 import HomePage from './components/HomePage';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import InfoPage from './components/InfoPage';
-import FilterPage from './components/FilterPage';
+import WishList from './components/WishList';
 import Watchlist from './components/WatchList';
-import { NavLink } from 'react-router-dom';
+import Filter from './components/Filter';
+import FilterPage from './components/FilterPage';
+import SearchPage from './components/SearchPage';
 
 function App() {
   return (
@@ -20,11 +22,18 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/details/:id" element={<InfoPage/>}/>
-          <Route path="/filter" element={<FilterPage/>}></Route>
+          <Route path='/filter' element={<FilterPage/>} />
+          
           <Route path="/watch-list" element={<Watchlist/>}/>
 
+          <Route path='/search' element={<SearchPage/>}/>
+          
         </Routes>
       </Router>
+      {/* <Search/> */}
+      {/* <HomePage/> */}
+      {/* <Movies/> */}
+      {/* <Popular/> */}
     </div>
   );
 }

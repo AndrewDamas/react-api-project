@@ -3,23 +3,21 @@ import { Link } from 'react-router-dom';
 import Genres from '../models/Genres';
 import Results from '../models/Popular'
 import GenreListService from '../services/GenreList';
-import FavoriteContextModel from '../context/FavoriteContext';
+import WishList from './WishList';
 import "../styles/HomePage.css"
+import FavoriteContextModel from '../context/FavoriteContext';
 
 export default function MovieCard(movie: Results) {
-    // const watchlistArray: Results[] = [];
-    const [genres, setGenres] = useState<Genres[]>();
 
     const {favMovies, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
-    
+
+    const [genres, setGenres] = useState<Genres[]>();
+    // const [favorited, setFavorited] = useState(false);
     useEffect(() => {
         GenreListService().then(data => {
           setGenres(data);
         });
     }, []);
-
-   
-
   return (
     <div className='movieListing'>
         <a href={`/details/${movie.id}`}>
@@ -45,29 +43,20 @@ export default function MovieCard(movie: Results) {
             )
         }
         </div>
-        <div>
+        { 
+            <div>
                     
-                    <button onClick={() => {
-        
-                        console.log(movie);
-                    
-                        addFavoriteMovie(movie);
+            <button onClick={() => {
 
-                        console.log(favMovies);
-                        
-                        }}><i className="fa-solid fa-heart"></i> </button>
-                    
-                      <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
-        
-        </div>
+                console.log(movie);
+            
+                addFavoriteMovie(movie)}}><i className="fa-solid fa-heart"></i> </button>
+            
+              <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
 
-        {/* <div> 
-            <i onClick= {() => 
-                {addFavoriteMovie(movie);
-                console.log(favMovies);}
-            } 
-            className="fa-solid fa-heart"></i>
-        </div> */}
+            </div>
+        }
+       
     </div>
   )
 }

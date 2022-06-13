@@ -1,11 +1,13 @@
 import { ReactNode, useState } from "react";
-// import { MovieDetails } from "../models/MovieDetails";
 import Results from "../models/Popular";
 import FavoriteContext from "./FavoriteContext";
 
 interface Props {
   children: ReactNode;
 
+  // favorite: Results[];
+  // addMovie: (movie: Results[]) => void;
+  // removeMovie: (id: string) => void;
 }
 
 const FavoriteContextProvider = ({ children }: Props) => {
@@ -20,7 +22,6 @@ const FavoriteContextProvider = ({ children }: Props) => {
       copiedMovie.push(favorite)
       
       return copiedMovie
-
     });
     console.log(favMovies);
 

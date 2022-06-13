@@ -9,7 +9,10 @@
     display: flex;
     position: absolute;
     right: 1rem;
+    top: -8px;
     background-color: black;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.731);
+    padding: 20px;
 }
 
 #search {
@@ -17,6 +20,7 @@
     border: 1px solid white;
     border-radius: 5px;
     padding: .4rem;
+    color: white;
 
 }
 
@@ -37,4 +41,11 @@
 
  .Search .poster:hover {
     transform: scale(1.05);
+}
+
+.Search button {
+    background: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
 }
