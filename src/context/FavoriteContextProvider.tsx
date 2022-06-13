@@ -14,15 +14,22 @@ const FavoriteContextProvider = ({ children }: Props) => {
   const [favMovies, setFavMovies] = useState<Results[]>([]);
 
   function addFavoriteMovie(favorite: Results): void {
+    let index: number = 0;
+    favMovies.map(movie => {
+      if (movie.id === favorite.id)
+        index += 1;
+      })
+    if(index === 0){
+      setFavMovies((prev) => {
+        let copiedMovie = [...prev]
+        copiedMovie.push(favorite)
+        
+        return copiedMovie
+      });
+    }
     // copy then modify
     
     // works with .push() empty can provide an empty array 
-    setFavMovies((prev) => {
-      let copiedMovie = [...prev]
-      copiedMovie.push(favorite)
-      
-      return copiedMovie
-    });
     console.log(favMovies);
 
   }

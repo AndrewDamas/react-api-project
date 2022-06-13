@@ -16,8 +16,12 @@ export default function FilteredContextProvider({children}: FilteredProps){
         setFilteredMovies(prev => [...prev, movies]);
     }
 
+    function removeFilteredMovies():void {
+        setFilteredMovies([]);
+    }
+
     return (
-        <FilteredContext.Provider value={{filteredMovies, showFilter, setShowFilter1, addFilteredMovies}}>
+        <FilteredContext.Provider value={{filteredMovies, showFilter, setShowFilter1, addFilteredMovies, removeFilteredMovies}}>
             {children}
         </FilteredContext.Provider>
     );

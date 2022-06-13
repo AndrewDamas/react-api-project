@@ -8,21 +8,21 @@ import FilteredContext from "../context/FilterContext";
 
 export default function Filter() {
 
-    const {filteredMovies, showFilter, setShowFilter1, addFilteredMovies} = useContext(FilteredContext);
+    const {filteredMovies, showFilter, setShowFilter1, addFilteredMovies, removeFilteredMovies} = useContext(FilteredContext);
 
     const navigate = useNavigate();
 
     const [rating, setRating] = useState<string>("0");
     const [genre, setGenre] = useState("");
-    const [runtime,setRuntime] = useState<number>(180);
+    const [language,setLanguage] = useState<string>("en");
 
     const [discover, setDiscover] = useState<Results[]>([]);
 
     useEffect(() => {
-        Discover(parseInt(genre), parseInt(rating),"popularity.desc", runtime).then(data => {
+        Discover(parseInt(genre), parseInt(rating),"popularity.desc", language).then(data => {
         setDiscover(data);
         })
-    }, [genre, runtime, rating])
+    }, [genre, language, rating])
     
 
     return(
@@ -30,6 +30,7 @@ export default function Filter() {
         <form onSubmit={(e) => {
             e.preventDefault();
             setShowFilter1();
+            removeFilteredMovies();
             /* discoverRating.map(movie => addFilteredMovies(movie));
             discoverGenre.map(movie => addFilteredMovies(movie));
             discoverRuntime.map(movie => addFilteredMovies(movie)); */
@@ -65,48 +66,19 @@ export default function Filter() {
             
             </div>
             <div>
-                <h4>Runtime</h4>
-                <input type="radio" id="time1" name="time" value='30' onClick={()=>{setRuntime(30)}}></input>
-                <label htmlFor="time1"> 30 mins or less </label>
-                <input type="radio" id="time2" name="time" value='60' onClick={()=>{setRuntime(60)}}></input>
-                <label htmlFor="time2"> 1 hr or less</label>
-                <input type="radio" id="time3" name="time" value='120' onClick={()=>{setRuntime(120)}}></input>
-                <label htmlFor="time3"> 2 hrs or less </label>
-                <input type="radio" id="time4" name="time" value='180' onClick={()=>{setRuntime(180)}}></input>
-                <label htmlFor="time4">3 hrs or less </label>
+                <h4>Language</h4>
+                <input type="radio" id="l1" name="language" value='en' onClick={()=>{setLanguage("en")}}></input>
+                <label htmlFor="l1"> English </label>
+                <input type="radio" id="l2" name="language" value='es' onClick={()=>{setLanguage("es")}}></input>
+                <label htmlFor="l2"> Español </label>
+                <input type="radio" id="l3" name="language" value='ja' onClick={()=>{setLanguage("ja")}}></input>
+                <label htmlFor="l3"> 日本 </label>
+                <input type="radio" id="l4" name="language" value='fr' onClick={()=>{setLanguage("fr")}}></input>
+                <label htmlFor="l4">Française</label>
             
             </div>
-            {/* <button type='submit'>Apply Filters</button> */}
+            <button type='submit'>Apply Filters</button>
         </form>
-            {/* <div className="displayFilter category">
-            {
-            discoverRating.map((movie, index) => 
-            <MovieCard {...movie}/>)
-            }
-            </div>
-            <div className="displayFilter category">
-            {
-            discoverGenre.map((movie, index) => 
-            <MovieCard {...movie}/>)
-            }
-            </div> */}
-            {/* <div className="displayFilter category">
-            {
-            discoverRuntime.map((movie, index) => 
-            <MovieCard {...movie}/>)
-            }
-            </div> */}
-            <div className="displayFilter category">
-            {
-            discover.map((movie, index) => 
-            <MovieCard {...movie}/>)
-            }
-            </div>
     </div>
     )
 }
-
-// navigate to filterPage only when apply filter is clicked - will show rating results over home page .-. 
-// need to check parameters enetered for discover.... the runtimes dont always filter properly
-// one div does not have overflow hidden -.-' 
-//  search also displays over home page.... navigate to search page? (run into same problem as filter function?)

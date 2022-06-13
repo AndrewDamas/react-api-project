@@ -54,3 +54,7 @@ i .fa-solid .fa-house {
 .hidden {
     display: none;
 }
+
+.fa-heart:visited {
+    color: white;
+}

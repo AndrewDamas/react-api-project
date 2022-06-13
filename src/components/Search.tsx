@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
+import SearchContext from '../context/SearchContext';
 import SearchMovieResults from '../models/Search';
 import GetMovies from '../services/GetMovie';
 import '../styles/Search.css'
@@ -7,6 +8,7 @@ import '../styles/Search.css'
 function Search() {
   const [title, setTitle] = useState<string>("");
   const [movie, setMovie] = useState<SearchMovieResults[]>([])
+
 
   const [shown,SetShown] =useState(true);
 

@@ -6,14 +6,16 @@ interface FilterContextModel {
     filteredMovies: Results[],
     showFilter: boolean,
     setShowFilter1: () => void,
-    addFilteredMovies: (movies: Results) => void
+    addFilteredMovies: (movies: Results) => void,
+    removeFilteredMovies: () => void
 }
 
 const defaultFilteredMovies: FilterContextModel = {
     filteredMovies: [],
     showFilter: false,
     setShowFilter1: () => {},
-    addFilteredMovies: () => {}
+    addFilteredMovies: () => {},
+    removeFilteredMovies: () => {}
 }
 
 const FilteredContext = createContext(defaultFilteredMovies);

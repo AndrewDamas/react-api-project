@@ -5,17 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import FilteredContextProvider from './context/FilteredContextProvider';
 import FavoriteContextProvider from './context/FavoriteContextProvider';
+import SearchContextProvider from './context/SearchContextProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <SearchContextProvider>
     <FilteredContextProvider>
     <FavoriteContextProvider> 
       <App />
     </FavoriteContextProvider>
     </FilteredContextProvider>
+    </SearchContextProvider>
   </React.StrictMode>
 );
 
