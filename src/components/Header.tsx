@@ -1,3 +1,6 @@
+
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import FilteredContext from '../context/FilterContext';
@@ -14,6 +17,12 @@ function Header() {
     <header>
         <NavLink to='/' className="logo"><i className="fa-solid fa-trash-can"></i>MOVIE JUNKIE</NavLink>
         <ul>
+            <li>
+              <NavLink to="/watch-list">
+              <i className="fa-solid fa-heart"></i> 
+              </NavLink>
+            </li>
+            <li><i className="fa-solid fa-filter"></i></li>
             <li>Watchlist</li>
             <li><i className="fa-solid fa-filter" onClick={(e) =>{
               setShowFilter1();

@@ -3,11 +3,23 @@ import Genres from '../models/Genres'
 import Results from '../models/Popular'
 import Discover from '../services/Discover';
 import GenreListService from '../services/GenreList';
+import GetMovie from '../services/GetMovie';
+import GetMovies from '../services/GetMovie';
 import getPopular from '../services/GetPopular';
 import '../styles/HomePage.css'
 import MovieCard from './MovieCard';
+import WishList from './WishList';
 
 export default function HomePage() {
+  const [filter, setFilter] = useState<Results[]>([])
+
+  // const [favorites, setFavorites] = useState<Results[]>()
+
+  // const addFavoriteMovie = (movie: any) => {
+  //   const newFavoriteList = [...favorites, movie]; 
+  //   setFavorites(newFavoriteList)
+  // }
+
   const [popular, setPopular] = useState<Results[]>([]);
   const [genres, setGenres] = useState<Genres[]>();
   const [discoverAction, setDiscoverAction] = useState<Results[]>([]);
@@ -143,6 +155,16 @@ export default function HomePage() {
             <MovieCard {...movie}/>
             ).slice(2)
           }
+        </div>
+
+            {/* WatchList */}
+        <div className='favorites'>
+            {
+
+              // favorites?.map((movie, index)=>
+              // <MovieCard {...movie}/>
+              // ).slice(0)
+            }
         </div>
     </div>
   )

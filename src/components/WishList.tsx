@@ -2,7 +2,10 @@ import React from 'react'
 
 function WishList() {
   return (
-    <div>WishList</div>
+
+    <div>
+        <span className='favorites'> Add to Favorites </span>
+    </div>
   )
 }
 
