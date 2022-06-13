@@ -9,6 +9,7 @@ import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import InfoPage from './components/InfoPage';
 import FilterPage from './components/FilterPage';
+import Watchlist from './components/WatchList';
 import { NavLink } from 'react-router-dom';
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/details/:id" element={<InfoPage/>}/>
           <Route path="/filter" element={<FilterPage/>}></Route>
-          {/* <Route path='' element={<Navigate to="/filter"/>}/> */}
+          <Route path="/watch-list" element={<Watchlist/>}/>
+
         </Routes>
       </Router>
     </div>

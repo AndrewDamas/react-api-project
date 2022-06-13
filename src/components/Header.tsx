@@ -14,7 +14,9 @@ function Header() {
     <header>
         <NavLink to='/' className="logo"><i className="fa-solid fa-trash-can"></i>MOVIE JUNKIE</NavLink>
         <ul>
-            <li>Watchlist</li>
+            <li><NavLink to="/watch-list">
+              <i className="fa-solid fa-heart"></i> 
+              </NavLink></li>
             <li><i className="fa-solid fa-filter" onClick={(e) =>{
               setShowFilter1();
             }}></i></li>

@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Genres from '../models/Genres';
 import Results from '../models/Popular'
 import GenreListService from '../services/GenreList';
+import FavoriteContextModel from '../context/FavoriteContext';
 import "../styles/HomePage.css"
 
 export default function MovieCard(movie: Results) {
     // const watchlistArray: Results[] = [];
     const [genres, setGenres] = useState<Genres[]>();
-    const [favorited, setFavorited] = useState(false);
+
+    const {favMovies, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
+    
     useEffect(() => {
         GenreListService().then(data => {
           setGenres(data);
         });
     }, []);
+
+   
+
   return (
     <div className='movieListing'>
         <a href={`/details/${movie.id}`}>
@@ -39,22 +45,29 @@ export default function MovieCard(movie: Results) {
             )
         }
         </div>
-        {/* {
-            favorited === false ? 
-            <button onClick={() => {
-                watchlistArray.push(movie);
-                setFavorited(!favorited);
-            }}>ADD TO WATCHLIST</button> :
-            <button onClick={() => {
-                watchlistArray.push(movie);
-                setFavorited(!favorited);
-            }}>REMOVE FROM WATCHLIST</button>
-        }
-        {
-            watchlistArray.map((movie, index) => 
-                <p key={index}>{movie.title}</p>
-            )
-        } */}
+        <div>
+                    
+                    <button onClick={() => {
+        
+                        console.log(movie);
+                    
+                        addFavoriteMovie(movie);
+
+                        console.log(favMovies);
+                        
+                        }}><i className="fa-solid fa-heart"></i> </button>
+                    
+                      <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
+        
+        </div>
+
+        {/* <div> 
+            <i onClick= {() => 
+                {addFavoriteMovie(movie);
+                console.log(favMovies);}
+            } 
+            className="fa-solid fa-heart"></i>
+        </div> */}
     </div>
   )
 }
