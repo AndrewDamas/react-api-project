@@ -4,15 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import FavoriteContextProvider from './context/FavoriteContextProvider';
+import FilteredContextProvider from './context/FilteredContextProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    
     <FavoriteContextProvider> 
       <App />
     </FavoriteContextProvider>
+
+    <FilteredContextProvider>
+      <App />
+    </FilteredContextProvider>
+    
   </React.StrictMode>
 );
 

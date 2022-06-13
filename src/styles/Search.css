@@ -4,7 +4,9 @@
 
 .Search form{
     display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right: 1rem;
+    background-color: black;
 }
 
 #search {
