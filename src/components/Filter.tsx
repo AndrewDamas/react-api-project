@@ -45,7 +45,7 @@ export default function Filter() {
             <input type="range" id="rating" min={"0"} max={"10"} onChange={(e) => {setRating(e.target.value)}}></input>
 
             <label htmlFor="rating">10 </label>
-            {rating}
+            
 
             </div>
             <div>
@@ -62,7 +62,7 @@ export default function Filter() {
                 <option value={10749}>Romance</option>
                 <option value={53}>Thriller</option>
             </select>
-            {genre}
+            
             </div>
             <div>
                 <h4>Runtime</h4>
@@ -74,9 +74,9 @@ export default function Filter() {
                 <label htmlFor="time3"> 2 hrs or less </label>
                 <input type="radio" id="time4" name="time" value='180' onClick={()=>{setRuntime(180)}}></input>
                 <label htmlFor="time4">3 hrs or less </label>
-                {runtime} 
+            
             </div>
-            <button type='submit'>Apply Filters</button>
+            {/* <button type='submit'>Apply Filters</button> */}
         </form>
             {/* <div className="displayFilter category">
             {

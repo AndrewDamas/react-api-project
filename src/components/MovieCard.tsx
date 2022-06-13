@@ -46,7 +46,7 @@ export default function MovieCard(movie: Results) {
         { 
             <div>
                     
-            <button onClick={() => {
+            <button className="heart" onClick={() => {
 
                 console.log(movie);
             

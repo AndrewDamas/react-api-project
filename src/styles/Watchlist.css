@@ -1,71 +1,79 @@
-.HomePage {
+.WatchList {
     margin: 3.8rem 0 0 1rem;
 }
+.WatchList .movieSection {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+}
 
-.HomePage .movieListing {
+.WatchList .movieSection::-webkit-scrollbar {
+    display: none;
+}
+
+.WatchList .movieListing {
     margin-left: 10px;
+    margin-top: 10px;
     flex-wrap: wrap;
     text-align: center;
 }
 
-.HomePage h1 {
+.WatchList h1 {
     font-family: 'Varela Round', sans-serif;
     margin-top: 10px;
 }
 
-.HomePage h3 {
+.WatchList h3 {
     margin: 15px 0px 0px 0px;
+    font-size: 35px;
 }
 
-.HomePage .poster {
+.WatchList .poster {
     margin-left: 8px;
+    margin-top: 15px;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
     border-radius: 5px;
-    width: 250px;
+    width: 300px;
     transition: .2s;
 }
 
-.HomePage .poster:hover {
+.WatchList .poster:hover {
     transform: scale(1.05);
+    
 }
 
-.HomePage .movieGenre {
+.WatchList .movieGenre {
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0px 20px 0px 15px
 }
 
-.HomePage ul {
+.WatchList ul {
     padding: 0;
 }
 
-.HomePage li {
+.WatchList li {
     list-style-type: none;
     margin-left: 5px;
 }
 
-.HomePage .category {
-    display: flex;
-    overflow-x: scroll;
-}
 
-.HomePage .category::-webkit-scrollbar {
-    display: none;
-}
-
-.HomePage .movieListing button {
+.WatchList .movieListing button {
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid white;
     border-radius: 15px;
     color: white;
     font-size: 10px;
-    font-weight: 650;
     padding: 10px;
     margin: 2px;
 }
 
-.HomePage .movieListing button:hover {
+.WatchList .movieListing .heart {
+    display: none;
+}
+
+.WatchList button:hover {
     background-color: white;
     color: black;
 }
