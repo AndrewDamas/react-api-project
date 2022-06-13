@@ -28,8 +28,6 @@ function InfoPage() {
           <p>{movie?.runtime} min</p>
         </div>
         <p>{movie?.overview}</p>
-
-        
         {/* {
             favorited === false ? 
             <button onClick={() => {

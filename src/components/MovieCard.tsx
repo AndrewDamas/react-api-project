@@ -1,18 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Genres from '../models/Genres';
 import Results from '../models/Popular'
 import GenreListService from '../services/GenreList';
-import WishList from './WishList';
 import "../styles/HomePage.css"
-import FavoriteContextModel from '../context/FavoriteContext';
 
 export default function MovieCard(movie: Results) {
-
-    const {favMovies, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
-
+    // const watchlistArray: Results[] = [];
     const [genres, setGenres] = useState<Genres[]>();
-    // const [favorited, setFavorited] = useState(false);
+    const [favorited, setFavorited] = useState(false);
     useEffect(() => {
         GenreListService().then(data => {
           setGenres(data);
@@ -43,20 +39,22 @@ export default function MovieCard(movie: Results) {
             )
         }
         </div>
-        { 
-            <div>
-                    
+        {/* {
+            favorited === false ? 
             <button onClick={() => {
-
-                console.log(movie);
-            
-                addFavoriteMovie(movie)}}><i className="fa-solid fa-heart"></i> </button>
-            
-              <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
-
-            </div>
+                watchlistArray.push(movie);
+                setFavorited(!favorited);
+            }}>ADD TO WATCHLIST</button> :
+            <button onClick={() => {
+                watchlistArray.push(movie);
+                setFavorited(!favorited);
+            }}>REMOVE FROM WATCHLIST</button>
         }
-       
+        {
+            watchlistArray.map((movie, index) => 
+                <p key={index}>{movie.title}</p>
+            )
+        } */}
     </div>
   )
 }
