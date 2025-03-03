@@ -1,19 +1,16 @@
-import { createContext } from "react" 
-import { MovieDetails } from "../models/MovieDetails"
-import Results from "../models/Popular"
-import Discover from "../services/Discover"
+import { createContext } from "react";
+import Results from "../models/Popular";
 
-interface FavoriteContextModel{
-  // favorite: Results[];
-  favMovies: Results[];
-  addFavoriteMovie: (results: Results) => void;
-  removeFavoriteMovie: (id: number) => void;
+interface FavoriteContextModelTemp {
+	favMovies: Results[];
+	addFavoriteMovie: (results: Results) => void;
+	removeFavoriteMovie: (id: number) => void;
 }
-const defaultValues:FavoriteContextModel  = {
-  // favorite: [],
-  favMovies: [],
-  addFavoriteMovie: () => { },
-  removeFavoriteMovie: () => { },
-}
+const defaultValues: FavoriteContextModelTemp = {
+	favMovies: [],
+	addFavoriteMovie: () => {},
+	removeFavoriteMovie: () => {},
+};
+
 const FavoriteContextModel = createContext(defaultValues);
-export default FavoriteContextModel
+export default FavoriteContextModel;

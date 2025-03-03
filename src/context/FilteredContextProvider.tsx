@@ -1,28 +1,52 @@
-import { ReactNode, useState, useContext } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import Results from "../models/Popular";
 import FilteredContext from "./FilterContext";
+import Discover, { DiscoverFilters } from "../services/Discover";
+import { categories } from "../constants/categories";
 
-interface FilteredProps {children: ReactNode;}
+interface FilteredProps {
+	readonly children: ReactNode;
+}
 
-export default function FilteredContextProvider({children}: FilteredProps){
-    const [filteredMovies, setFilteredMovies] = useState<Results[]>([]);
-    const [showFilter, setShowFilter] = useState<boolean>(false);
-    
-    function setShowFilter1(): void{
-        setShowFilter(!showFilter)
-    }
+export default function FilteredContextProvider({ children }: FilteredProps) {
+	const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
+	const [filteredMovies, setFilteredMovies] = useState<{ [key: number]: Results[] }>({});
+	const [showFilter, setShowFilter] = useState<boolean>(false);
 
-    function addFilteredMovies(movies: Results):void{
-        setFilteredMovies(prev => [...prev, movies]);
-    }
+	useEffect(() => {
+		categories.forEach(({ id }) => {
+			Discover({ genre: id }).then((data) => {
+				setFilteredMovies((prev) => ({ ...prev, [id]: data }));
+			});
+		});
+	}, []);
 
-    function removeFilteredMovies():void {
-        setFilteredMovies([]);
-    }
+	const toggleShowFilter = useCallback(() => {
+		setShowFilter(!showFilter);
+	}, [showFilter]);
 
-    return (
-        <FilteredContext.Provider value={{filteredMovies, showFilter, setShowFilter1, addFilteredMovies, removeFilteredMovies}}>
-            {children}
-        </FilteredContext.Provider>
-    );
-};
+	const filterMovies = useCallback(({ genre, vote_average_gte, language }: DiscoverFilters) => {
+		setSelectedGenre(genre ?? null);
+		categories.forEach(({ id }) => {
+			Discover({
+				genre: genre ?? id,
+				vote_average_gte: vote_average_gte,
+				language: language,
+			}).then((data) => {
+				setFilteredMovies((prev) => ({ ...prev, [id]: data }));
+			});
+		});
+	}, []);
+
+	const providerMemoized = useMemo(() => {
+		return {
+			filteredMovies,
+			showFilter,
+			selectedGenre,
+			toggleShowFilter,
+			filterMovies,
+		};
+	}, [filteredMovies, showFilter, selectedGenre, toggleShowFilter, filterMovies]);
+
+	return <FilteredContext.Provider value={providerMemoized}>{children}</FilteredContext.Provider>;
+}

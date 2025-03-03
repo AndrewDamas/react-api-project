@@ -1,62 +1,69 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import Genres from '../models/Genres';
-import Results from '../models/Popular'
-import GenreListService from '../services/GenreList';
-import WishList from './WishList';
-import "../styles/HomePage.css"
-import FavoriteContextModel from '../context/FavoriteContext';
+import { useContext, useEffect, useState } from "react";
+import Genres from "../models/Genres";
+import Results from "../models/Popular";
+import GenreListService from "../services/GenreList";
+import "../styles/HomePage.css";
+import FavoriteContextModel from "../context/FavoriteContext";
 
-export default function MovieCard(movie: Results) {
-
-    const {favMovies, addFavoriteMovie, removeFavoriteMovie } = useContext(FavoriteContextModel);
-
-    const [genres, setGenres] = useState<Genres[]>();
-    // const [favorited, setFavorited] = useState(false);
-    useEffect(() => {
-        GenreListService().then(data => {
-          setGenres(data);
-        });
-    }, []);
-  return (
-    <div className='movieListing'>
-        <a href={`/details/${movie.id}`}>
-            <img src= {`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt="poster" className="poster" />
-        </a>
-        {/* <p>{movie.overview}</p> */}
-        <h3>{movie.title}</h3>
-        <div className='movieGenre'>
-        {
-            movie.genre_ids.map((genre_id, index) => 
-            genres !== undefined &&
-            <ul key={index}>
-                {
-                    genres.map((genre, index) => {
-                    if (genre.id === genre_id){
-                        return (
-                            <li key={index}>{genre.name}</li>
-                        )
-                    }
-                    })
-                }
-            </ul>
-            )
-        }
-        </div>
-        { 
-            <div>
-                    
-            <button className="heart" onClick={() => {
-
-                console.log(movie);
-            
-                addFavoriteMovie(movie)}}><i className="fa-solid fa-heart"></i> </button>
-            
-              <button onClick={() => removeFavoriteMovie(movie.id) }>REMOVE FROM WATCHLIST</button> 
-
-            </div>
-        }
-       
-    </div>
-  )
+interface MovieCardProps {
+	movie: Results;
 }
+
+const MovieCard = ({ movie }: MovieCardProps) => {
+	const { addFavoriteMovie, removeFavoriteMovie, favMovies } = useContext(FavoriteContextModel);
+
+	const [genres, setGenres] = useState<Genres[]>();
+	useEffect(() => {
+		GenreListService().then((data) => {
+			setGenres(data);
+		});
+	}, []);
+	const movieIsFoundInContext = favMovies.find((favMovie) => favMovie.id === movie.id);
+
+	return (
+		<div className="movieListing">
+			<a href={`/details/${movie.id}`}>
+				<img
+					src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+					alt="poster"
+					className="poster"
+				/>
+			</a>
+			<h3>{movie.title}</h3>
+			<div className="movieGenre">
+				{movie.genre_ids.map(
+					(genre_id) =>
+						genres !== undefined && (
+							<ul key={genre_id}>
+								{genres.map((genre) => {
+									if (genre.id === genre_id) {
+										return <li key={genre.id}>{genre.name}</li>;
+									} else {
+										return <></>;
+									}
+								})}
+							</ul>
+						)
+				)}
+			</div>
+			{
+				<div>
+					{!movieIsFoundInContext ? (
+						<button
+							className="heart"
+							onClick={() => {
+								addFavoriteMovie(movie);
+							}}
+						>
+							<i className="fa-solid fa-heart"></i>
+						</button>
+					) : (
+						<button onClick={() => removeFavoriteMovie(movie.id)}>REMOVE FROM WATCHLIST</button>
+					)}
+				</div>
+			}
+		</div>
+	);
+};
+
+export default MovieCard;

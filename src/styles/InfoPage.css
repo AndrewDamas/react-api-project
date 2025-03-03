@@ -1,20 +1,20 @@
-.InfoPage{
-    height: 100%;
-    text-align: center;
+.InfoPage {
+	height: 100%;
+	text-align: center;
 }
 
 .InfoPage .poster {
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
-    border-radius: 5px;
-    width: 350px;
+	box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
+	border-radius: 5px;
+	width: 350px;
 }
 
 .InfoPage .movieListing {
-    padding: 2rem;
-    padding-top: 3.5rem;
+	padding: 2rem;
+	padding-top: 3.5rem;
 }
 
 .InfoPage .extraInfo {
-    display: flex;
-    justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }

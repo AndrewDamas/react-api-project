@@ -1,8 +1,8 @@
 export interface GenreList {
-    genres : Genres[]
+	genres: Genres[];
 }
 
 export default interface Genres {
-    id : number,
-    name : string
+	id: number;
+	name: string;
 }

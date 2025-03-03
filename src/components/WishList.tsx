@@ -1,9 +1,5 @@
-import React from 'react'
-
 function WishList() {
-  return (
-    <div>WishList</div>
-  )
+	return <div>WishList</div>;
 }
 
-export default WishList
+export default WishList;

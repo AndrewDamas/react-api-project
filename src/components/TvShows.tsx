@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function TvShows() {
-  return (
-    <div>TvShows</div>
-  )
+	return <div>TvShows</div>;
 }
 
-export default TvShows
+export default TvShows;

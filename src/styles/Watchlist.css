@@ -1,79 +1,77 @@
 .WatchList {
-    margin: 3.8rem 0 0 1rem;
+	margin: 3.8rem 0 0 1rem;
 }
 .WatchList .movieSection {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
 }
 
 .WatchList .movieSection::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .WatchList .movieListing {
-    margin-left: 10px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    text-align: center;
+	margin-left: 10px;
+	margin-top: 10px;
+	flex-wrap: wrap;
+	text-align: center;
 }
 
 .WatchList h1 {
-    font-family: 'Varela Round', sans-serif;
-    margin-top: 10px;
+	font-family: "Varela Round", sans-serif;
+	margin-top: 10px;
 }
 
 .WatchList h3 {
-    margin: 15px 0px 0px 0px;
-    font-size: 35px;
+	margin: 15px 0px 0px 0px;
+	font-size: 35px;
 }
 
 .WatchList .poster {
-    margin-left: 8px;
-    margin-top: 15px;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
-    border-radius: 5px;
-    width: 300px;
-    transition: .2s;
+	margin-left: 8px;
+	margin-top: 15px;
+	box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
+	border-radius: 5px;
+	width: 300px;
+	transition: 0.2s;
 }
 
 .WatchList .poster:hover {
-    transform: scale(1.05);
-    
+	transform: scale(1.05);
 }
 
 .WatchList .movieGenre {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 0px 20px 0px 15px
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 0px 20px 0px 15px;
 }
 
 .WatchList ul {
-    padding: 0;
+	padding: 0;
 }
 
 .WatchList li {
-    list-style-type: none;
-    margin-left: 5px;
+	list-style-type: none;
+	margin-left: 5px;
 }
 
-
 .WatchList .movieListing button {
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid white;
-    border-radius: 15px;
-    color: white;
-    font-size: 10px;
-    padding: 10px;
-    margin: 2px;
+	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid white;
+	border-radius: 15px;
+	color: white;
+	font-size: 10px;
+	padding: 10px;
+	margin: 2px;
 }
 
 .WatchList .movieListing .heart {
-    display: none;
+	display: none;
 }
 
 .WatchList button:hover {
-    background-color: white;
-    color: black;
+	background-color: white;
+	color: black;
 }

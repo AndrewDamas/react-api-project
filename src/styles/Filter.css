@@ -1,92 +1,92 @@
 .Filter {
-    height: 35vh;
-    background-color:rgba(0, 0, 0, 0.735);
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
-    width: 75vw; 
-    /* media query width 30vw */
-    position: absolute;
-    right: 2.5rem;
-    top: -11px;
-    z-index: 1;
+	height: 35vh;
+	background-color: rgba(0, 0, 0, 0.735);
+	box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
+	width: 75vw;
+	/* media query width 30vw */
+	position: absolute;
+	right: 2.5rem;
+	top: 84px;
+	z-index: 1;
+	position: fixed;
 }
 
 .Filter form {
-  margin: 20px;
-  text-align: center;
+	margin: 20px;
+	text-align: center;
 }
 
 .Filter h4 {
-    margin: 10px 0px;
+	margin: 10px 0px;
 }
 
 .Filter button {
-    margin: 20px 15px;
-    border: 1.5px solid white;
-    color: white;
-    background-color: black;
-    border-radius: 11px;
-    padding: 10px 20px;
+	margin: 20px 15px;
+	border: 1.5px solid white;
+	color: white;
+	background-color: black;
+	border-radius: 11px;
+	padding: 10px 20px;
 }
 
-
 .displayFilter {
-    display:flex;
-    flex-direction: row;
-    margin: 3rem 0 0 0;
-    overflow-x: scroll;
+	display: flex;
+	flex-direction: row;
+	margin: 3rem 0 0 0;
+	overflow-x: scroll;
 }
 
 .displayFilter .movieListing {
-    margin-left: 10px;
-    flex-wrap: wrap;
-    text-align: center;
+	margin-left: 10px;
+	flex-wrap: wrap;
+	text-align: center;
 }
 
 .displayFilter h1 {
-    font-family: 'Varela Round', sans-serif;
-    margin-top: 10px;
+	font-family: "Varela Round", sans-serif;
+	margin-top: 10px;
 }
 
 .displayFilter h3 {
-    margin: 15px 0px 0px 0px;
+	margin: 15px 0px 0px 0px;
 }
 
 .displayFilter .poster {
-    margin-left: 8px;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
-    border-radius: 5px;
-    width: 250px;
-    transition: .2s;
+	margin-left: 8px;
+	box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.735);
+	border-radius: 5px;
+	width: 250px;
+	transition: 0.2s;
 }
 
 .displayFilter .poster:hover {
-    transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 .displayFilter .movieGenre {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 0px 20px 0px 15px
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 0px 20px 0px 15px;
 }
 
 .displayFilter ul {
-    padding: 0;
+	padding: 0;
 }
 
 .displayFilter li {
-    list-style-type: none;
-    margin-left: 5px;
+	list-style-type: none;
+	margin-left: 5px;
 }
 
 .displayFilter::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 i:visited {
-    color: white;
+	color: white;
 }
 
 i::before {
-    color: white;
+	color: white;
 }
